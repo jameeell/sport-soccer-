@@ -1,0 +1,152 @@
+<br><br><br>
+<div class="container site-section">
+
+  <div style="margin: 5%;">
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+          aria-controls="pills-home" aria-selected="true">Players</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+          aria-controls="pills-profile" aria-selected="false">Matches</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="pills-user-tab" data-toggle="pill" href="#pills-user" role="tab"
+          aria-controls="pills-profile" aria-selected="false">user</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="pills-blog-tab" data-toggle="pill" href="#pills-blog" role="tab"
+          aria-controls="pills-blog" aria-selected="false">blogs</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Poids</th>
+              <th scope="col">position</th>
+              <th scope="col">Image</th>
+              <th>action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let p of allPlayers'>
+              <th scope="row">{{p.id}}</th>
+              <td>{{p.name}}</td>
+              <td>{{p.poids}}</td>
+              <td>{{p.position}}</td>
+              <!-- Property Binding (src, class, id, ... ) : propriétés HTML
+                    Envoyer les valeurs de la partie TS à la partie HTML aux propriétés 
+                    de la page  WEB
+                    -->
+              <td><img [src]="p.image" [alt]="p.name" height="100px" width="100px"></td>
+              <!-- <td><img src={{p.image}} alt=""></td> -->
+              <td>
+                <button class="btn btn-outline-success" (click)='displayPlayers(p.id)'>Display</button>
+                <button class="btn btn-outline-info" (click)='editPlayers(p.id)'>Edit</button>
+                <button class="btn btn-outline-danger" (click)='deletePlayers(p.id)'>Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Team One</th>
+              <th scope="col">logo team one</th>
+              <th scope="col">Team Two</th>
+              <th scope="col">logo Team Two</th>
+              <th scope="col">scoreOne</th>
+              <th scope="col">scoreTwo</th>
+              <th>action</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let m of allMatches'>
+              <th scope="row">{{m.id}}</th>
+              <th>{{m.teamOne}} ></th>
+              <th><img [src]="m.logo1" height="50px" width="50px" alt=""></th>
+              <td>{{m.teamTwo}}</td>
+              <th><img [src]="m.logo2" height="50px" width="50px" alt=""></th>
+              <td>{{m.scoreOne}}</td>
+              <td>{{m.scoreTwo}}</td>
+
+              <button class="btn btn-outline-success" (click)='displayMatchs(m.id)'>Display</button>
+              <button class="btn btn-outline-info" (click)='editMatchs(m.id)'>Edit</button>
+              <button class="btn btn-outline-danger" (click)='deleteMatchs(m.id)'>Delete</button>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tab-pane fade" id="pills-user" role="tabpanel" aria-labelledby="pills-user-tab">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">first name</th>
+              <th scope="col">last name</th>
+              <th scope="col">email</th>
+              <th scope="col">pwd</th>
+              <th scope="col">conf pwd</th>
+              <th scope="col">tel</th>
+              <th>action</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let u of allUsers'>
+              <th scope="row">{{u.id}}</th>
+              <th>{{u.firstName | uppercase}} ></th>
+              <td>{{u.lastName | reverse }}</td>
+              <td>{{u.email}}</td>
+              <td>{{u.pwd}}</td>
+              <td>{{u.confirmPwd}}</td>
+              <td>{{u.tel}}</td>
+
+              <button class="btn btn-outline-success" (click)='displayUser(u.id)'>Display</button>
+              <button class="btn btn-outline-info" (click)='editUser(u.id)'>Edit</button>
+              <button class="btn btn-outline-danger" (click)='deleteUser(u.id)'>Delete</button>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tab-pane fade" id="pills-blog" role="tabpanel" aria-labelledby="pills-blog-tab">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Images</th>
+              <th scope="col">last Team</th>
+              <th scope="col">Salary</th>
+              <th>action</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let b of blogs'>
+              <th scope="row">{{b.id}}</th>
+              <th>{{b.name}}</th>
+              <td> <img [src]="b.Images"  width="150px" height="150px" ></td>
+              <td>{{b.lastTeam}}</td>
+              <td>{{b.salary}}</td>
+<td>
+              <button class="btn btn-outline-success" (click)='displayBlog(b.id)'>Display</button>
+              <button class="btn btn-outline-info" (click)='editBlog(b.id)'>Edit</button>
+              <button class="btn btn-outline-danger" (click)='deleteBlog(b.id)'>Delete</button>
+            </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

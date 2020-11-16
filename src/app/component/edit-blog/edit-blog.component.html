@@ -1,0 +1,43 @@
+                <!--(template driven form)-->
+
+                <div class="hero overlay" style="background-image: url('assets/images/bg_3.jpg');">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg-9 mx-auto text-center">
+                                <h1 class="text-white">Edit Blog</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="site-section offset-4">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <!--(template driven form)-->
+                                <!--matchform: identifiant de formulaire-->
+                                <form #editBlogForm="ngForm" (ngSubmit)='editBlog()'>
+                                    <div class="form-group">
+                                        <input  type="text" class="form-control" [(ngModel)]='blog.name' [ngModelOptions]="{standalone: true}" placeholder="Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" [(ngModel)]='blog.images' [ngModelOptions]="{standalone: true}" placeholder="Images">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" [(ngModel)]='blog.lastTeam' [ngModelOptions]="{standalone: true}" placeholder="Last Team">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" [(ngModel)]='blog.salary' [ngModelOptions]="{standalone: true}" placeholder="Salary">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary py-3 px-5" > Edit Blog </button>
+                                    </div>
+                                </form>
+                            </div>
+                        
+                        </div>
+                    
+                      </div>
+                    </div>
